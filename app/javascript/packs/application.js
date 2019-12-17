@@ -1,1 +1,21 @@
+import "jquery";
 import "bootstrap";
+
+import "../templates/vendor/jquery-3.3.1.min";
+import "../templates/vendor/bootstrap.bundle.min";
+import "../templates/vendor/chart";
+import "../templates/vendor/chartjs-plugin-datalabels";
+import "../templates/vendor/moment.min";
+import "../templates/vendor/fullcalendar.min";
+import "../templates/vendor/datatables.min";
+import "../templates/vendor/perfect-scrollbar.min";
+import "../templates/vendor/progressbar.min";
+import "../templates/vendor/jquery.barrating.min";
+import "../templates/vendor/select2.full";
+import "../templates/vendor/nouislider.min";
+import "../templates/vendor/bootstrap-datepicker";
+import "../templates/vendor/Sortable";
+import "../templates/vendor/mousetrap.min.js";
+import "../templates/vendor/glide.min.js";
+import "../templates/dore.script";
+import "../templates/scripts";

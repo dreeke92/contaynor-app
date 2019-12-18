@@ -1,8 +1,9 @@
-/* 
+/*
 Plugin : Select Image From Library
 Version : 0.0.1
 Description : Select from a modal which contains list of media items.
 */
+
 $.selectFromLibrary = function(element, options) {
   var plugin = this;
   var defaults = {

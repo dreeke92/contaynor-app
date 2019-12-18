@@ -20,6 +20,11 @@ gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 
+gem 'popper_js', '~> 1.14.5'
+gem 'owlcarousel-rails'
+gem 'bootstrap-tagsinput-rails'
+gem "jquery-slick-rails"
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

@@ -2,10 +2,14 @@
   "name": "contaynor-app",
   "private": true,
   "dependencies": {
+    "@fullcalendar/daygrid": "^4.3.0",
     "@rails/webpacker": "^4.2.0",
     "@types/chart.js": "^2.9.5",
     "bootstrap": "^4.4.1",
+    "fullcalendar": "^3.10.1",
+    "glide": "^0.2.0",
     "jquery": "^3.4.1",
+    "moment": "^2.24.0",
     "popper.js": "^1.16.0"
   },
   "devDependencies": {

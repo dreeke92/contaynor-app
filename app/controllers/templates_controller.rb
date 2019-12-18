@@ -1,5 +1,5 @@
 class TemplatesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:page]
+  skip_before_action :authenticate_user!
 
   def page
   end

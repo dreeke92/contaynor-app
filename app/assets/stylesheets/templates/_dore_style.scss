@@ -193,7 +193,7 @@ body {
 .logo-single {
   width: 110px;
   height: 35px;
-  background: url($logoPath) no-repeat;
+  background: image-url($logoPath) no-repeat;
   background-position: center center;
   display: inline-block;
   margin-bottom: 60px;
@@ -1998,10 +1998,11 @@ button {
 }
 
 .logo {
-  width: 110px;
-  height: 35px;
+  width: 165px;
+  height: 53px;
   background: url($logoPath) no-repeat;
   background-position: center center;
+  background-size: contain;
   margin: 0 auto;
 
   @include respond-below(sm) {
@@ -2014,6 +2015,7 @@ button {
   height: 35px;
   background: url($logoPathMobile) no-repeat;
   background-position: center center;
+  background-size: contain;
 }
 
 //Menu Config Button

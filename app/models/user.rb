@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :organization, optional: true
+
+  def name
+    self.first_name + " " + self.last_name
+  end
 end

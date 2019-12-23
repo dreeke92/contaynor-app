@@ -6,12 +6,18 @@
     <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <% if current_user == nil || current_user.dark_theme == false %>
+    <%= stylesheet_link_tag 'application-light-green', media: 'all' %>
+    <% else %>
+      <%= stylesheet_link_tag 'application-dark-green', media: 'all' %>
+    <% end %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body id="app-container" class="menu-default show-spinner">
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/menu' %>
+    <% if current_user %>
+      <%= render 'shared/navbar/index' %>
+      <%= render 'shared/menu' %>
+    <% end %>
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>

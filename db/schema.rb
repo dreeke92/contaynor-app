@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_152247) do
     t.boolean "organization_admin", default: false, comment: "Boolean denoting whether or not the user has admin rights in his/her organization"
     t.boolean "employee_admin", default: false, comment: "Boolean denoting whether or not the user is an employee of Contaynor, and thus has admin rights"
     t.boolean "master_admin", default: false, comment: "Boolean denoting wether or not the user has master admin rights"
+    t.boolean "dark_theme", default: false, comment: "Preferred theme is usually white team, unless the user chooses for the dark theme and sets boolean to true"
     t.bigint "organization_id", comment: "A user is part of an organization, be it Contaynor or a client of contaynor."
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"

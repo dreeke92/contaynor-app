@@ -20,7 +20,7 @@ ontex = Organization.create!(name: "Ontex", industry: "FMCG producer")
 ontex_stat = OrganizationStat.create!(tree_count: 1, tree_emission_impact: 150, kilometer_count: 150, kilometer_emission_impact: 1500, organization: ontex)
 
 puts "Creating users..."
-andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", organization: contaynor)
+andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor)
 andreas.organization = contaynor
-suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", organization: ontex)
+suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex)
 suzanne.organization = ontex

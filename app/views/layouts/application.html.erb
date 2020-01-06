@@ -16,9 +16,9 @@
   <body id="app-container" class="menu-default show-spinner">
     <% if current_user %>
       <%= render 'shared/navbar/index' %>
-      <%= render 'shared/menu' %>
+      <%= render 'shared/menu/index' %>
     <% end %>
-    <%= render 'shared/flashes' %>
+    <%= render 'shared/flashes/index' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>

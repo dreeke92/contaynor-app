@@ -8,16 +8,12 @@
 
 puts "Destroying all existing accounts"
 Address.destroy_all
-User.destroy_all
-OrganizationStat.destroy_all
-User.destroy_all
 Organization.destroy_all
+User.destroy_all
 
 puts "Creating organizations and their stats..."
-contaynor = Organization.create!(name: "Contaynor", industry: "Transportation")
-contaynor_stat = OrganizationStat.create!(tree_count: 15, tree_emission_impact: 3000, kilometer_count: 1500, kilometer_emission_impact: 30000, organization: contaynor)
-ontex = Organization.create!(name: "Ontex", industry: "FMCG producer")
-ontex_stat = OrganizationStat.create!(tree_count: 1, tree_emission_impact: 150, kilometer_count: 150, kilometer_emission_impact: 1500, organization: ontex)
+contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
+ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 
 puts "Creating users..."
 andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor)

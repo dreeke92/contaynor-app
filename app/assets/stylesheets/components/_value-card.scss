@@ -1,0 +1,14 @@
+.values-background {
+  background-image:
+    linear-gradient(to bottom, transparentize($gradient-color-1, 0.9), transparentize($gradient-color-2, .1)),
+    image-url('values.jpg');
+  background-size: cover;
+  // height: 385px;
+  transition: 0.5s;
+  // background-size: 350% auto;
+  cursor: pointer;
+
+  .lead {
+    line-height: 2.3rem;
+  }
+}

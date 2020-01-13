@@ -9,7 +9,7 @@
 
     <div class="row">
 
-      <!-- This is the start of a card -->
+      <!-- This is the start of a green card -->
       <div class="col-lg-4">
         <div class="card mb-4 progress-banner">
           <div class="card-body justify-content-between d-flex flex-row align-items-center">
@@ -25,26 +25,104 @@
           </div>
         </div>
       </div>
-      <!-- This is the end of a card -->
+      <!-- This is the end of a white card -->
 
-      <!-- This is the start of a card -->
+      <!-- This is the start of a green card -->
       <div class="col-lg-4">
-        <div class="card mb-4">
+        <div class="card mb-4 white-card">
           <div class="card-body justify-content-between d-flex flex-row align-items-center">
             <div>
-                <i class="iconsminds-environmental mr-2 text-white align-text-bottom d-inline-block"></i>
+                <i class="iconsminds-forest-1 mr-2 text-green align-text-bottom d-inline-block"></i>
                 <div>
                   <% if current_user %>
-                    <p class="lead text-white">Total positive CO2 impact: <strong><%= current_user.organization.tree_emission_impact %></strong></p>
-                    <p class="text-small text-white">Total positive CO2 reduction measured in tonnes</p>
+                    <p class="lead text-default">Number of trees planted: <strong class="text-green"><%= current_user.organization.trees_planted %></strong></p>
+                    <p class="text-small text-default">Number of trees planted as a result of your transportation assignments</p>
                   <% end %>
                 </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- This is the end of a card -->
+      <!-- This is the end of a white card -->
 
+      <!-- This is the start of a green card -->
+      <div class="col-lg-4">
+        <div class="card mb-4 white-card">
+          <div class="card-body justify-content-between d-flex flex-row align-items-center">
+            <div>
+                <i class="iconsminds-road-2 mr-2 text-green align-text-bottom d-inline-block"></i>
+                <div>
+                  <% if current_user %>
+                    <p class="lead text-default">Total distance: <strong class="text-green"><%= current_user.organization.distance_realized %></strong></p>
+                    <p class="text-small text-default">Amount of zero-emission kilometers driven with Contaynor</p>
+                  <% end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- This is the end of a white card -->
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h1>Transportations Assignments</h1>
+        <div class="separator mb-5"></div>
+      </div>
+    </div>
+
+    <div class="row sortable">
+        <div class="col-xl-3 col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-body d-flex justify-content-between align-items-center text-default">
+                <h6 class="mb-0">Performed</h6>
+                <h4 class="text-green">50</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-body d-flex justify-content-between align-items-center text-default">
+                <h6 class="mb-0">In execution</h6>
+                <h4 class="text-green">100</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-body d-flex justify-content-between align-items-center text-default">
+                <h6 class="mb-0">Confirmed</h6>
+                <h4 class="text-green">150</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 mb-4">
+          <div class="card">
+            <div class="card-body d-flex justify-content-between align-items-center text-default">
+                <h6 class="mb-0">Pending</h6>
+                <h4 class="text-green">351</h4>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-6 col-lg-12 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+              <h5 class="card-title">Calendar</h5>
+              <div class="calendar"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-12 mb-4">
+        <div class="card values-background justify-content-end h-100">
+            <div class="card-body justify-content-start d-flex flex-column">
+                <span class="badge badge-pill badge-theme-3 align-self-start mb-3">Our values</span>
+                <h2 class="text-white">We drive Electric!</h2>
+                <p class="lead text-white">Check out our zero-emission values</p>
+            </div>
+        </div>
+      </div>
     </div>
   </div>
 </main>

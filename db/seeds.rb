@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Destroying all existing accounts"
+AddressBook.destroy_all
 Address.destroy_all
 Organization.destroy_all
 User.destroy_all
@@ -20,3 +21,17 @@ andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first
 andreas.organization = contaynor
 suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex)
 suzanne.organization = ontex
+
+puts "Creating addresses for organizations"
+ontex_hq_address = Address.create!(description: "Ontext Headquarters", street_name: "Korte Keppestraat", street_number: "21", postal_code: "9320", city: "Aalst", country: "Belgium")
+bme_address = Address.create!(description: "BME Genk", street_name: "Henry Fordlaan", street_number: "62", postal_code: "3600", city: "Genk", country: "Belgium")
+contaynor_address = Address.create!(description: "Contaynor HQ", street_name: "Tervurenlaan", street_number: "36/18", postal_code: "1040", city: "Etterbeek", country: "Belgium")
+
+puts "Creating Address books"
+AddressBook.create!(organization: ontex, address: ontex_hq_address, address_relation: true, head_quarters: true)
+AddressBook.create!(organization: ontex, address: bme_address, address_relation: false, head_quarters: false)
+
+AddressBook.create!(organization: contaynor, address: ontex_hq_address, address_relation: false, head_quarters: false)
+AddressBook.create!(organization: contaynor, address: bme_address, address_relation: false, head_quarters: false)
+AddressBook.create!(organization: contaynor, address: contaynor_address, address_relation: true, head_quarters: true)
+

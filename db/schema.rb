@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_131519) do
+ActiveRecord::Schema.define(version: 2020_01_14_101653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "address_books", force: :cascade do |t|
+    t.bigint "organization_id", comment: "This key denotes the address is in the address book of which organization"
+    t.bigint "address_id", comment: "This key denotes which address is listed in the address book of the organization (can be the address of the client of the creator of the transportation assignment)"
+    t.boolean "address_relation", comment: "This boolean is true if the address belongs to the organization itself"
+    t.boolean "head_quarters", comment: "This boolean is true when the address is the HQ of the organization"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_address_books_on_address_id"
+    t.index ["organization_id"], name: "index_address_books_on_organization_id"
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "description", comment: "A name describing the location. e.g. client warehouse"
@@ -23,11 +34,26 @@ ActiveRecord::Schema.define(version: 2020_01_12_131519) do
     t.string "city", comment: "city"
     t.string "country", comment: "country"
     t.string "telephone_number", comment: "telephone number"
-    t.bigint "organization_id"
-    t.boolean "is_headquarter", comment: "If the organization belongs to an organization, the boolean denotes whether or not the address is an HQ of the organization"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["organization_id"], name: "index_addresses_on_organization_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "organization_id"
+    t.date "pickup_date", comment: "This is the date when the load will be picked up"
+    t.time "pickup_time", comment: "This is the time when the load will be picked up"
+    t.string "comment", comment: "This is a comment for the creator of the order to give extra information/context"
+    t.string "type", comment: "This denotes what type of order it is"
+    t.string "status", comment: "This is for the Contaynor admin/system to denote what status of the order is"
+    t.bigint "pickup_address_id"
+    t.bigint "delivery_address_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"
+    t.index ["organization_id"], name: "index_orders_on_organization_id"
+    t.index ["pickup_address_id"], name: "index_orders_on_pickup_address_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -64,5 +90,10 @@ ActiveRecord::Schema.define(version: 2020_01_12_131519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "addresses", "organizations"
+  add_foreign_key "address_books", "addresses"
+  add_foreign_key "address_books", "organizations"
+  add_foreign_key "orders", "addresses", column: "delivery_address_id"
+  add_foreign_key "orders", "addresses", column: "pickup_address_id"
+  add_foreign_key "orders", "organizations"
+  add_foreign_key "orders", "users"
 end

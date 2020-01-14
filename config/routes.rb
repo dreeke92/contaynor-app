@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :organizations, only: [:show]
+  resources :orders, only: [:new, :create]
 
   # These are all routes for the template and should be omitted for production
   get 'template', to: "templates#Dashboard.Default"

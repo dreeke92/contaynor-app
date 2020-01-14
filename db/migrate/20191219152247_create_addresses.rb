@@ -8,8 +8,6 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :city, comment: "city"
       t.string :country, comment: "country"
       t.string :telephone_number, comment: "telephone number"
-      t.references :organization, foreign_key: true
-      t.boolean :is_headquarter, comment: "If the organization belongs to an organization, the boolean denotes whether or not the address is an HQ of the organization"
 
       t.timestamps
     end

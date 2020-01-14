@@ -1,0 +1,26 @@
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h1>Book a new transport</h1>
+        <div class="separator mb-5"></div>
+
+        <%= simple_form_for @order do |f| %>
+          <%= f.input :pickup_date, as: :string, input_html: {type: :date } %>
+          <%= f.input :pickup_time, as: :string, input_html: {type: :time } %>
+          <%= f.input :comment %>
+          <%= f.select :pickup_address_id,
+            @addresses.map{ |r| [r.description, r.id] }, include_blank: false
+          %>
+          <%= f.select :delivery_address_id,
+            @addresses.map{ |r| [r.description, r.id] },
+              include_blank: false
+           %>
+
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</main>

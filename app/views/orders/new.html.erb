@@ -4,20 +4,28 @@
       <div class="col-12">
         <h1>Book a new transport</h1>
         <div class="separator mb-5"></div>
-
-        <%= simple_form_for @order do |f| %>
-          <%= f.input :pickup_date, as: :string, input_html: {type: :date } %>
-          <%= f.input :pickup_time, as: :string, input_html: {type: :time } %>
-          <%= f.input :comment %>
-          <%= f.select :pickup_address_id,
-            @addresses.map{ |r| [r.description, r.id] }, include_blank: false
+        <%= form_for @order, url: {action: "create"} do |f| %>
+          <%#= f.input :pickup_date, as: :string, input_html: {type: :date } %>
+          <%#= f.input :pickup_time, as: :string, input_html: {type: :time } %>
+          <%#= f.input :comment %>
+          <%#= f.association :pickup_address,
+              collection: Address.all,
+              :label_method => :description,
+              :value_method => :id,
+              :selected_method => :id,
+              include_blank: false
           %>
-          <%= f.select :delivery_address_id,
-            @addresses.map{ |r| [r.description, r.id] },
+          <%#= f.association :delivery_address,
+              collection: Address.all,
+              :label_method => :description,
+              :value_method => :id,
+              :selected_method => :id,
               include_blank: false
            %>
+            <%= f.select :status, ["Yes", "No"] %>
 
-          <%= f.submit class: "btn btn-primary" %>
+
+          <%= f.button :submit %>
         <% end %>
 
       </div>

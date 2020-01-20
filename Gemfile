@@ -24,6 +24,8 @@ gem 'popper_js', '~> 1.14.5'
 gem 'owlcarousel-rails'
 gem 'bootstrap-tagsinput-rails'
 gem "jquery-slick-rails"
+gem 'bootstrap-datepicker-rails'
+gem 'date_wrapper'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

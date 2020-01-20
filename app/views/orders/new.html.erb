@@ -2,33 +2,39 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
+
         <h1>Book a new transport</h1>
         <div class="separator mb-5"></div>
-        <%= form_for @order, url: {action: "create"} do |f| %>
-          <%#= f.input :pickup_date, as: :string, input_html: {type: :date } %>
-          <%#= f.input :pickup_time, as: :string, input_html: {type: :time } %>
-          <%#= f.input :comment %>
-          <%#= f.association :pickup_address,
-              collection: Address.all,
-              :label_method => :description,
-              :value_method => :id,
-              :selected_method => :id,
-              include_blank: false
-          %>
-          <%#= f.association :delivery_address,
-              collection: Address.all,
-              :label_method => :description,
-              :value_method => :id,
-              :selected_method => :id,
-              include_blank: false
-           %>
-            <%= f.select :status, ["Yes", "No"] %>
 
+        <div class="card mb-4">
+          <div class="card-body">
+            <%= simple_form_for @order, url: {action: "create"} do |f| %>
+              <%#= f.input :pickup_date, as: :string, input_html: { type: :date } %>
+              <%= f.input :pickup_date, :as => :string, :input_html => { :value => localize(f.object.pickup_date), type: :date } %>
+              <%= f.input :pickup_time, as: :string, input_html: { type: :time } %>
+              <%= f.association :pickup_address,
+                  collection: Address.all,
+                  :label_method => :description,
+                  :value_method => :id,
+                  :selected_method => :id,
+                  include_blank: false
+              %>
 
-          <%= f.button :submit %>
-        <% end %>
+              <%= f.association :delivery_address,
+                  collection: Address.all,
+                  :label_method => :description,
+                  :value_method => :id,
+                  :selected_method => :id,
+                  include_blank: false,
+                  :class => "btn btn-outline-primary"
+               %>
 
+              <%= f.submit "Continue", class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </main>
+

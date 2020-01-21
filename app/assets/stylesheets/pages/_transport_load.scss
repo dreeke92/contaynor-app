@@ -1,0 +1,12 @@
+.transport-detail {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.transport-detail{
+  .badge {
+    height: fit-content;
+    font-size: 90%;
+  }
+}

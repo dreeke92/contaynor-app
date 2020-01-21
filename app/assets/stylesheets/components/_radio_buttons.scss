@@ -6,9 +6,9 @@
 }
 
 .address-choice{
-  background: $theme-color-1;
-  border-color: $theme-color-1;
-  color: $button-text-color;
+  // background: $theme-color-1;
+  border: 1px solid $theme-color-1;
+  color: #3a3a3a;
   padding: 10px;
   border-radius: 50px;
   margin: 5px 10px 5px 0px;
@@ -19,11 +19,11 @@
     opacity: 1;
     cursor: pointer;
     color: $button-text-color;
-    background-color: darken($theme-color-1, 8%);
-    border-color: darken($theme-color-1, 8%);
+    background-color: darken($theme-color-1, 0%);
+    border-color: darken($theme-color-1, 0%);
   }
   &.active {
-    background: $theme-color-6;
+    background: darken($theme-color-1, 0%);
     color: white;
     opacity: 1;
   }

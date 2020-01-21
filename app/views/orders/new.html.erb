@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12">
 
-        <h1>Book a new transport</h1>
+        <h1>Plan a parcel delivery</h1>
         <div class="separator mb-5"></div>
 
         <div class="card mb-4">
@@ -58,7 +58,9 @@
                   </div>
                 </fieldset>
 
-              <%= f.submit "Continue", class: 'btn btn-secondary' %>
+                <%= f.input :comment, placeholder: "Write a comment specific to this transport", as: :text, input_html: {rows: 5, cols: 10} %>
+
+              <%= f.submit "Continue", class: 'btn btn-primary' %>
             <% end %>
           </div>
         </div>

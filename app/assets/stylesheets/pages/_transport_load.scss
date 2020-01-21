@@ -10,3 +10,33 @@
     font-size: 90%;
   }
 }
+
+.transport-load-detail{
+  .badge {
+    height: fit-content;
+    font-size: 90%;
+  }
+}
+
+.volume-input {
+  .form-group {
+    margin-bottom: none !important;
+  }
+}
+
+.volume-input-element {
+  display: flex !important;
+  align-items: center;
+  margin-bottom: none !important;
+}
+
+.margin-bottom-one {
+  margin-bottom: 1rem;
+}
+
+.scrollable-list {
+  overflow:hidden;
+  overflow-y:scroll;
+  max-height: 50vh;
+}
+

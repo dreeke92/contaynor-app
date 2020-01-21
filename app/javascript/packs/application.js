@@ -6,7 +6,7 @@ import "bootstrap";
 import "../templates/vendor/jquery.validate/additional-methods";
 import "../templates/vendor/jquery.validate/jquery.validate";
 import "../templates/vendor/jquery.autoellipsis";
-import "../templates/vendor/jquery.contextMenu.min";
+// import "../templates/vendor/jquery.contextMenu.min";
 import "../templates/vendor/jquery.smartWizard.min";
 import "../templates/vendor/jquery.barrating.min";
 import "../templates/vendor/Chart.bundle.min.js";
@@ -36,6 +36,7 @@ import "../templates/vendor/dropzone.min";
 
 // Import own components
 import "../features/radio-buttons";
+import "../features/sticky-scroll";
 
 
 // Initialize template necessary code

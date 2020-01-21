@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_133212) do
   end
 
   create_table "transport_loads", force: :cascade do |t|
-    t.string "type"
+    t.string "load_type"
     t.string "description"
     t.float "unit_volume"
     t.float "unit_weight"

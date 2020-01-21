@@ -1,0 +1,89 @@
+    <main>
+        <div class="container-fluid disable-text-selection">
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-2">
+                        <h1>Transportation overview</h1>
+                    </div>
+                    <div class="separator mb-5"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-6 col-lg-12 mb-4">
+                  <h2 class="card-title">Transport details</h2>
+                  <div class="card">
+                        <div class="card-body">
+                            <div class="scroll">
+                              <div class="transport-detail">
+                                <p class="list-item-heading">Status:</p>
+                                <span class="badge badge-pill badge-primary"><%= @order.status.upcase %></span>
+                              </div>
+                              <div class="transport-detail">
+                                <p class="list-item-heading">Date:</p>
+                                <div class="text-primary font-weight-semibold d-none d-sm-block">
+                                    <%= @order.pickup_date %>
+                                </div>
+                              </div>
+                              <div class="transport-detail">
+                                <p class="list-item-heading">Pick up address:</p>
+                                <p  style="max-width: 50%;" class="text-muted mb-1"><%= @order.pickup_address.complete %></p>
+                              </div>
+
+                              <div class="transport-detail">
+                                <p class="list-item-heading">Delivery address:</p>
+                                <p  style="max-width: 50%;" class="text-muted mb-1"><%= @order.delivery_address.complete %></p>
+                              </div>
+
+                              <div class="transport-detail">
+                                <p class="list-item-heading">Comment:</p>
+                                <p style="max-width: 50%;"><%= @order.comment %></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-12 mb-4 list">
+                    <h2 class="card-title">Parcels (<%= @transport_loads.count %>)</h2>
+
+                      <div class="scrollable-list">
+                        <% @transport_loads.each do |load| %>
+                          <div class="card d-flex flex-row mb-3">
+                            <div class="d-flex flex-grow-1 min-width-zero">
+                              <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100">
+                                    ID: PCON00<%= load.id %>
+                                </p>
+                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100 text-muted"><%= load.unit_weight.to_s %> kg</p>
+                                <div class="w-15 w-xs-100 transport-load-detail">
+                                    <span class="badge badge-pill badge-secondary"><%= load.load_type.upcase %></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
+
+                      <%= simple_form_for [@order, @transport_load] do |f| %>
+                        <div class="card d-flex flex-row mb-3" style="margin-top: 1rem;">
+                            <div class="d-flex flex-grow-1 min-width-zero">
+                              <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                  <div class="list-item-heading mb-0 truncate w-40 w-xs-100">
+                                    <%= f.submit "Add Parcel", class: 'btn btn-primary margin-bottom-one' %>
+                                  </div>
+                                  <div class="list-item-heading mb-0 truncate w-40 w-xs-100 volume-input">
+                                    <%= f.input :unit_weight, input_html: { class: 'volume-input-element' }, placeholder: "KG", label: false %>
+                                  </div>
+                                  <div class="w-15 w-xs-100">
+                                  <%= f.input :load_type, :collection => ["Parcel", "Box", "Letter", "Palet"], :label => "Type", :include_blank => false, label: false %>
+                                  </div>
+                              </div>
+                            </div>
+                      <% end %>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>

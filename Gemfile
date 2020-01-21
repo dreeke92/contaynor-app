@@ -25,7 +25,7 @@ gem 'owlcarousel-rails'
 gem 'bootstrap-tagsinput-rails'
 gem "jquery-slick-rails"
 gem 'bootstrap-datepicker-rails'
-gem 'date_wrapper'
+gem 'bootstrap-timepicker-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

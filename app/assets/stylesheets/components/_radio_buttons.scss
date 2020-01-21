@@ -1,0 +1,35 @@
+.address-choices{
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin: 5px 0;
+}
+
+.address-choice{
+  background: $theme-color-1;
+  border-color: $theme-color-1;
+  color: $button-text-color;
+  padding: 10px;
+  border-radius: 50px;
+  margin: 5px 10px 5px 0px;
+  opacity: .8;
+  // flex: 0 0 30%;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    color: $button-text-color;
+    background-color: darken($theme-color-1, 8%);
+    border-color: darken($theme-color-1, 8%);
+  }
+  &.active {
+    background: $theme-color-6;
+    color: white;
+    opacity: 1;
+  }
+}
+
+input[type="radio"] {
+    left: -999em;
+    position: absolute;
+}

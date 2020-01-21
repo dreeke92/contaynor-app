@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_101653) do
+ActiveRecord::Schema.define(version: 2020_01_21_133212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,18 @@ ActiveRecord::Schema.define(version: 2020_01_14_101653) do
     t.float "distance_emission_impact", comment: "Amount of CO2 saved from driving zero-emission with Contaynor"
   end
 
+  create_table "transport_loads", force: :cascade do |t|
+    t.string "type"
+    t.string "description"
+    t.float "unit_volume"
+    t.float "unit_weight"
+    t.string "comment"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_transport_loads_on_order_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,4 +108,5 @@ ActiveRecord::Schema.define(version: 2020_01_14_101653) do
   add_foreign_key "orders", "addresses", column: "pickup_address_id"
   add_foreign_key "orders", "organizations"
   add_foreign_key "orders", "users"
+  add_foreign_key "transport_loads", "orders"
 end

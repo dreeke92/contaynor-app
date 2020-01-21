@@ -1,0 +1,2 @@
+class TransportLoadsController < ApplicationController
+end

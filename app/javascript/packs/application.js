@@ -41,3 +41,4 @@ import "../features/radio-buttons";
 // Initialize template necessary code
 $('.calendar').fullCalendar({ });
 $('.timepicker').timepicker();
+$('.datepicker').datepicker()

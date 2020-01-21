@@ -9,8 +9,6 @@ class OrdersController < ApplicationController
     @order.organization = current_user.organization
     @order.status = "Pending"
     @order.save
-    raise
-    redirect_to root_path
   end
 
   private

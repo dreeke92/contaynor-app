@@ -47,23 +47,6 @@
                 <div class="col-xl-6 col-lg-12 mb-4 list">
                     <h2 class="card-title">Parcels (<%= @transport_loads.count %>)</h2>
 
-                      <div class="scrollable-list">
-                        <% @transport_loads.each do |load| %>
-                          <div class="card d-flex flex-row mb-3">
-                            <div class="d-flex flex-grow-1 min-width-zero">
-                              <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100">
-                                    ID: PCON00<%= load.id %>
-                                </p>
-                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100 text-muted"><%= load.unit_weight.to_s %> kg</p>
-                                <div class="w-15 w-xs-100 transport-load-detail">
-                                    <span class="badge badge-pill badge-secondary"><%= load.load_type.upcase %></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        <% end %>
-                      </div>
 
                       <%= simple_form_for [@order, @transport_load] do |f| %>
                         <div class="card d-flex flex-row mb-3" style="margin-top: 1rem;">
@@ -82,6 +65,24 @@
                             </div>
                       <% end %>
                     </div>
+
+                      <div class="scrollable-list">
+                        <% @transport_loads.each do |load| %>
+                          <div class="card d-flex flex-row mb-3">
+                            <div class="d-flex flex-grow-1 min-width-zero">
+                              <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100">
+                                    ID: PCON00<%= load.id %>
+                                </p>
+                                <p class="list-item-heading mb-0 truncate w-40 w-xs-100 text-muted"><%= load.unit_weight.to_s %> kg</p>
+                                <div class="w-15 w-xs-100 transport-load-detail">
+                                    <span class="badge badge-pill badge-secondary"><%= load.load_type.upcase %></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div>
 
                 </div>
             </div>

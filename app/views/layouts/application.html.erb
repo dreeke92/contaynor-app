@@ -6,12 +6,7 @@
     <title>TODO</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <%# if current_user == nil || current_user.dark_theme == false %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%# else %>
-      <%#= stylesheet_link_tag 'application-dark-green', media: 'all' %>
-    <%# end %>
-    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body id="app-container" class="menu-default show-spinner">
     <% if current_user %>

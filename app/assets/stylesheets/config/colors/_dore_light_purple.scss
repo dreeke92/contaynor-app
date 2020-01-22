@@ -4,30 +4,30 @@ $background-color: #f8f8f8;
 $foreground-color : white;
 $input-background: white;
 
-$dark-btn-background: #131113;
-$light-btn-background: #ececec;
+$dark-btn-background: #575057;
+$light-btn-background: #d4d4d4;
 
 $button-text-color: #fff;
 
-$theme-color-1: #880a1f;
-$theme-color-2: #e7284a;
-$theme-color-3: #fd5d3d;
-$theme-color-4: #843a47;
-$theme-color-5: #d8667a;
-$theme-color-6: #f69682;
+$theme-color-1: #922c88;
+$theme-color-2: #4556ac;
+$theme-color-3: #af67a4;
+$theme-color-4: #743c6e;
+$theme-color-5: #4b5480;
+$theme-color-6: #795d75;
 
 $primary-color: #3a3a3a;
 $secondary-color: #8f8f8f;
 $muted-color: #909090;
 
-$gradient-color-1 : #992235;
-$gradient-color-2 : #5d0413;
-$gradient-color-3 : #a32337;
+$gradient-color-1 : #a9449f;
+$gradient-color-2 : #3c164f;
+$gradient-color-3 : #8a3481;
 
-$lp-bg-color-1 : #3e060f;
-$lp-bg-color-2 : #580d19;
-$lp-bg-color-3 : #bb1f37;
-$lp-bg-color-4 : #df2b46;
+$lp-bg-color-1 : #400d47;
+$lp-bg-color-2 : #511452;
+$lp-bg-color-3 : #b02ba6;
+$lp-bg-color-4 : #cb33bd;
 
 $shadowOffsetsTop : 1 3 10 14 19;
 $shadowBlursTop: 1.5 5 10 14 19;
@@ -43,5 +43,5 @@ $logoPathMobile: "../img/logo-mobile.svg";
 $lpLogoPath: "../img/logo-white.svg";
 $lpLogoPathPinned: "../img/logo-black.svg";
 
-@import "../_mixins.scss";
-@import "../_dore_style.scss";
+// @import "../_mixins.scss";
+// @import "../_dore_style.scss";

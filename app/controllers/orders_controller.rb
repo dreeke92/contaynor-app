@@ -13,6 +13,17 @@ class OrdersController < ApplicationController
     redirect_to new_order_transport_load_path(@order)
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.update(status: "Pending")
+    @order.save
+    redirect_to root_path
+  end
+
+  def index
+    @orders = current_user.organization.orders
+  end
+
   private
 
   def order_params

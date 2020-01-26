@@ -40,6 +40,9 @@
                                 <p style="max-width: 50%;"><%= @order.comment %></p>
                               </div>
                             </div>
+                            <div class="transport-details-confirm-order">
+                            <%= link_to "confirm order", order_path(@order), method: :patch, class: "btn btn-primary" %>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -53,7 +56,7 @@
                             <div class="d-flex flex-grow-1 min-width-zero">
                               <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
                                   <div class="list-item-heading mb-0 truncate w-40 w-xs-100">
-                                    <%= f.submit "Add Parcel", class: 'btn btn-primary margin-bottom-one' %>
+                                    <%= f.submit "Add Parcel", class: 'btn btn-secondary margin-bottom-one' %>
                                   </div>
                                   <div class="list-item-heading mb-0 truncate w-40 w-xs-100 volume-input">
                                     <%= f.input :unit_weight, input_html: { class: 'volume-input-element' }, placeholder: "KG", label: false %>

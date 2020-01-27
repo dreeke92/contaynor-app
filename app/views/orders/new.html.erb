@@ -9,8 +9,8 @@
         <div class="card mb-4">
           <div class="card-body">
             <%= simple_form_for @order, url: {action: "create"}, html: { autocomplete: 'off' } do |f| %>
-              <%= f.input :pickup_date, placeholder: "Select Date", as: :string, input_html: { class: "datepicker" } %>
-              <%= f.input :pickup_time, placeholder: "Select Time", as: :string, input_html: { class: "timepicker" } %>
+              <%= f.input :pickup_date, required: true, placeholder: "Select Date", as: :string, input_html: { class: "datepicker" } %>
+              <%= f.input :pickup_time, required: true, placeholder: "Select Time", as: :string, input_html: { class: "timepicker" } %>
               <%#= f.association :pickup_address,
                   collection: Address.all,
                   :label_method => :description,

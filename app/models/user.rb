@@ -5,8 +5,16 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :organization, optional: true
   has_many :orders
+  belongs_to :role
+  before_validation :set_default_role
 
   def name
-    self.first_name + " " + self.last_name
+    first_name + " " + last_name
+  end
+
+  private
+
+  def set_default_role
+    self.role ||= Role.find_by_name('non-admin')
   end
 end

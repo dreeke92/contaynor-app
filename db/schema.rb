@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_180543) do
+ActiveRecord::Schema.define(version: 2020_01_27_191545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,13 @@ ActiveRecord::Schema.define(version: 2020_01_27_180543) do
     t.float "distance_emission_impact", comment: "Amount of CO2 saved from driving zero-emission with Contaynor"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_roles_on_name"
+  end
+
   create_table "transport_loads", force: :cascade do |t|
     t.string "load_type"
     t.string "description"
@@ -97,9 +104,11 @@ ActiveRecord::Schema.define(version: 2020_01_27_180543) do
     t.boolean "master_admin", default: false, comment: "Boolean denoting wether or not the user has master admin rights"
     t.boolean "dark_theme", default: false, comment: "Preferred theme is usually white team, unless the user chooses for the dark theme and sets boolean to true"
     t.bigint "organization_id", comment: "A user is part of an organization, be it Contaynor or a client of contaynor."
+    t.bigint "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "address_books", "addresses"
@@ -109,4 +118,5 @@ ActiveRecord::Schema.define(version: 2020_01_27_180543) do
   add_foreign_key "orders", "organizations"
   add_foreign_key "orders", "users"
   add_foreign_key "transport_loads", "orders"
+  add_foreign_key "users", "roles"
 end

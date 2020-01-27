@@ -11,15 +11,22 @@ AddressBook.destroy_all
 Address.destroy_all
 Organization.destroy_all
 User.destroy_all
+# if you're destroying all accounts to avoid duplication, you can just use the `find_or_create_by` method
+# if this is run in production, it might fail if any address is linked to an order
 
 puts "Creating organizations and their stats..."
 contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 
+puts "Creating roles"
+['non-admin', 'admin'].each do |role|
+  Role.find_or_create_by({name: role})
+end
+
 puts "Creating users..."
 andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor)
 andreas.organization = contaynor
-suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex)
+suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex, role_id: 2)
 suzanne.organization = ontex
 
 puts "Creating addresses for organizations"

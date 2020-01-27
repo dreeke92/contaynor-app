@@ -9,6 +9,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body id="app-container" class="menu-default show-spinner">
+  <%# TODO: background no-footer ltr rounded for auth page %>
     <% if current_user %>
       <%= render 'shared/navbar/index' %>
       <%= render 'shared/menu/index' %>

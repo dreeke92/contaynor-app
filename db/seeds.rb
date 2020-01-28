@@ -18,15 +18,10 @@ puts "Creating organizations and their stats..."
 contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 
-puts "Creating roles"
-['non-admin', 'admin'].each do |role|
-  Role.find_or_create_by({name: role})
-end
-
 puts "Creating users..."
 andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor)
 andreas.organization = contaynor
-suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex, role_id: 2)
+suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex, organization_admin: true)
 suzanne.organization = ontex
 
 puts "Creating addresses for organizations"

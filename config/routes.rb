@@ -6,9 +6,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :update, :index] do
     resources :transport_loads, only: [:new, :create]
   end
+  resources :address_books, only: [:new, :create]
   namespace :admin do
-    # get 'user_management/index'
-
     get 'user_management', to: 'user_management#index'
   end
 

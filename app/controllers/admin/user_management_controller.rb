@@ -1,5 +1,5 @@
 class Admin::UserManagementController < ApplicationController
   def index
-    @users = User.non_admins
+    @users = current_user.orgainzation_members
   end
 end

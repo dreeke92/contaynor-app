@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :organizations, only: [:show]
+  resources :organizations, only: [:show] do
+    collection do
+      post 'remove_user/:user_id', to: 'organizations#remove_from_organization', as: 'remove_user'
+    end
+  end
   resources :orders, only: [:new, :create, :update, :index] do
     resources :transport_loads, only: [:new, :create]
   end

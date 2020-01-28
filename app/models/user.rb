@@ -11,7 +11,10 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    # role.name == 'admin'
-    false
+    organization_admin
+  end
+
+  def orgainzation_members
+    User.joins(:organization).where(organizations: { id: organization.id })
   end
 end

@@ -60,15 +60,7 @@
                               <%= user.telephone_number || 'N/A' %>
                             </p>
                             <div class="w-10 w-xs-100">
-                                <% if admin_action(user) == 'can_add' %>
-                                  <%= button_tag "Add", class: 'btn btn-primary' %>
-                                <% end %>
-
-                                <% if admin_action(user) == 'can_remove' %>
-                                  <%= button_tag "Remove", class: 'btn btn-danger' %>
-                                <% else %>
-                                  <%= button_tag "Remove", class: 'btn btn-info', disabled: true %>
-                                <% end %>
+                                <%= link_to 'Remove', remove_user_organizations_path(user_id: user.id), class: 'btn btn-danger', method: :post %>
                             </div>
                         </div>
                     </div>

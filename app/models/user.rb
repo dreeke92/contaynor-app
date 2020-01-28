@@ -8,8 +8,15 @@ class User < ApplicationRecord
   belongs_to :role
   before_validation :set_default_role
 
+  scope :admins, -> { joins(:role).merge(Role.is_admin) }
+  scope :non_admins, -> { joins(:role).merge(Role.non_admin) }
+
   def name
     first_name + " " + last_name
+  end
+
+  def is_admin?
+    role.name == 'admin'
   end
 
   private

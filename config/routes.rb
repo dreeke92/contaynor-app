@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :update, :index] do
     resources :transport_loads, only: [:new, :create]
   end
+  namespace :admin do
+    # get 'user_management/index'
+
+    get 'user_management', to: 'user_management#index'
+  end
 
   # These are all routes for the template and should be omitted for production
   get 'template', to: "templates#Dashboard.Default"

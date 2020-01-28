@@ -1,0 +1,80 @@
+<main>
+  <div class="container-fluid disable-text-selection">
+      <div class="row">
+          <div class="col-12">
+              <div class="mb-2">
+                  <h1>User Management</h1>
+                  <%# <div class="top-right-button-container">
+                      <button type="button" class="btn btn-primary btn-lg top-right-button mr-1">BOOK A NEW DELIVERY</button>
+                  </div> %>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12 list" data-check-all="checkAll">
+              <div class="d-flex flex-row">
+                  <div class="d-flex flex-grow-1 min-width-zero">
+                      <div
+                          class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
+                              Name
+                          </p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
+                              Email
+                          </p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
+                              Phone number
+                          </p>
+                          <%# <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
+                              Pickup Address
+                          </p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
+                              Delivery Address
+                          </p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
+                              Date
+                          </p> %>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
+                              Action
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="separator mb-5"></div>
+      <% @users.each do |user| %>
+        <div class="row">
+            <div class="col-12 list" data-check-all="checkAll">
+                <div class="card d-flex flex-row mb-3">
+                    <div class="d-flex flex-grow-1 min-width-zero">
+                        <div
+                            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= user.name %>">
+                              <%= user.name %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= user.email %>">
+                              <%= user.email %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100" title="<%= user.telephone_number %>">
+                              <%= user.telephone_number || 'N/A' %>
+                            </p>
+                            <div class="w-10 w-xs-100">
+                                <% if admin_action(user) == 'can_add' %>
+                                  <%= button_tag "Add", class: 'btn btn-primary' %>
+                                <% end %>
+
+                                <% if admin_action(user) == 'can_remove' %>
+                                  <%= button_tag "Remove", class: 'btn btn-danger' %>
+                                <% else %>
+                                  <%= button_tag "Remove", class: 'btn btn-info', disabled: true %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <% end %>
+  </div>
+</main>

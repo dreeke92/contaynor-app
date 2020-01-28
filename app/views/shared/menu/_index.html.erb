@@ -21,12 +21,14 @@
                     <% end %>
                 </li>
                 <%# TODO: Update path %>
-                <li class="<%= active_link root_path %>">
-                    <%= link_to root_path do %>
-                        <i class="iconsminds-gear"></i>
-                        <span>Settings</span>
-                    <% end %>
-                </li>
+                <% if current_user.is_admin? %>
+                    <li class="<%= active_link admin_user_management_path %>">
+                        <%= link_to admin_user_management_path do %>
+                            <i class="iconsminds-gear"></i>
+                            <span>Settings</span>
+                        <% end %>
+                    </li>
+                <% end %>
                 <li>
                     <%= link_to destroy_user_session_path, method: :delete do %>
                         <i class="iconsminds-arrow-outside"></i>

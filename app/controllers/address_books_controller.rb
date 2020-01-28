@@ -1,6 +1,6 @@
 class AddressBooksController < ApplicationController
-  def new
-    # @address = Address.new
+  def index
+    @address_books = current_user.organization.address_books
   end
 
   def create
@@ -12,12 +12,21 @@ class AddressBooksController < ApplicationController
         hq = current_user.organization.address_books&.where(head_quarters: true).first
         hq&.update(head_quarters: false)
       else
-        address_book = current_user.organization.address_books.build(address_id: address.id, address_relation: address_params[:address_relation], head_quarters: address_params[:head_quarters])
+        address_book = current_user.organization
+                                   .address_books
+                                   .build(address_id: address.id,
+                                          address_relation: address_params[:address_relation],
+                                          head_quarters: address_params[:head_quarters])
         address_book.save!
       end
     end
 
-    redirect_to new_order_path
+    redirect_back(fallback_location: root_path)
+  end
+
+  def destroy
+    AddressBook.where(id: params[:id])&.first&.destroy
+    redirect_back(fallback_location: root_path)
   end
 
   private

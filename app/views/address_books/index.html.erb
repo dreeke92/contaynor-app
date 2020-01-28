@@ -1,0 +1,68 @@
+<main>
+  <div class="container-fluid disable-text-selection">
+      <div class="row">
+          <div class="col-12">
+              <div class="mb-2">
+                  <h1>Address Book</h1>
+                  <div class="top-right-button-container">
+                      <button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-backdrop="static" data-target="#add_address_modal">ADD NEW ADDRESS ORGANIZATION</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <%= render 'orders/new_address_modal' %>
+      <div class="row">
+          <div class="col-12 list" data-check-all="checkAll">
+              <div class="d-flex flex-row">
+                  <div class="d-flex flex-grow-1 min-width-zero">
+                      <div
+                          class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Street name</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Street number</p>
+                          <p class="list-item-heading mb-0 truncate w-5 w-xs-100">Postal code</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Description</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">City</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Country</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Action</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="separator mb-5"></div>
+      <% @address_books.each do |book| %>
+        <div class="row">
+            <div class="col-12 list" data-check-all="checkAll">
+                <div class="card d-flex flex-row mb-3">
+                    <div class="d-flex flex-grow-1 min-width-zero">
+                        <div
+                            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= book.address[:street_name] %>">
+                              <%= book.address[:street_name] %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100" title="<%= book.address[:street_number] %>">
+                              <%= book.address[:street_number] %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-5 w-xs-100" title="<%= book.address[:postal_code] %>">
+                              <%= book.address[:postal_code] %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= book.address[:description] %>">
+                              <%= book.address[:description] || 'N/A' %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100" title="<%= book.address[:city] %>">
+                              <%= book.address[:city] || 'N/A' %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100" title="<%= book.address[:country] %>">
+                              <%= book.address[:country] || 'N/A' %>
+                            </p>
+                            <div class="w-10 w-xs-100">
+                                <%= link_to 'Remove', address_book_path(id: book.id), class: 'btn btn-danger', method: :delete %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <% end %>
+  </div>
+</main>

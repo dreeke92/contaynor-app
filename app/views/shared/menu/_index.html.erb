@@ -20,12 +20,19 @@
                         <span>Orders</span>
                     <% end %>
                 </li>
-                <%# TODO: Update path %>
                 <% if current_user.is_admin? %>
                     <li class="<%= active_link admin_user_management_path %>">
                         <%= link_to admin_user_management_path do %>
                             <i class="iconsminds-gear"></i>
                             <span>Settings</span>
+                        <% end %>
+                    </li>
+                <% end %>
+                <% if current_user.is_admin? %>
+                    <li class="<%= active_link address_books_path %>">
+                        <%= link_to address_books_path do %>
+                            <i class="iconsminds-address-book-2"></i>
+                            <span>Address Book</span>
                         <% end %>
                     </li>
                 <% end %>

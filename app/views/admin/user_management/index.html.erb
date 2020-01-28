@@ -4,12 +4,13 @@
           <div class="col-12">
               <div class="mb-2">
                   <h1>User Management</h1>
-                  <%# <div class="top-right-button-container">
-                      <button type="button" class="btn btn-primary btn-lg top-right-button mr-1">BOOK A NEW DELIVERY</button>
-                  </div> %>
+                  <div class="top-right-button-container">
+                      <button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-backdrop="static" data-target="#add_user_modal">ADD NEW USER TO ORGANIZATION</button>
+                  </div>
               </div>
           </div>
       </div>
+      <%= render 'add_user_modal' %>
       <div class="row">
           <div class="col-12 list" data-check-all="checkAll">
               <div class="d-flex flex-row">
@@ -25,15 +26,6 @@
                           <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
                               Phone number
                           </p>
-                          <%# <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                              Pickup Address
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                              Delivery Address
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                              Date
-                          </p> %>
                           <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
                               Action
                           </p>

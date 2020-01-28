@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'user_management', to: 'user_management#index'
   end
+  # named user so as not to conflict with devise
+  resources :user, only: [:create], controller: 'users'
 
   # These are all routes for the template and should be omitted for production
   get 'template', to: "templates#Dashboard.Default"

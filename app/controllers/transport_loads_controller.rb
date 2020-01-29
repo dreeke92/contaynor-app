@@ -1,7 +1,7 @@
 class TransportLoadsController < ApplicationController
   def new
     @order = Order.find(params[:order_id])
-    @transport_load = TransportLoad.new()
+    @transport_load = TransportLoad.new
     @transport_loads = @order.transport_loads
   end
 

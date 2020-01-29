@@ -3351,6 +3351,7 @@ $.dore = function (element, options) {
     /* 03.19. Datepicker */
     if ($().datepicker) {
       $("input.datepicker").datepicker({
+        format: 'dd/mm/yyyy',
         autoclose: true,
         rtl: isRtl,
         templates: {
@@ -4463,8 +4464,8 @@ $.dore = function (element, options) {
       $.validator.setDefaults({
         ignore: [],
         errorElement: "div",
-        submitHandler: function () {
-          alert("submitted!");
+        submitHandler: function (event) {
+          // alert("submitted!");
         },
         errorPlacement: function (error, element) {
           if (element.attr("class").indexOf("custom-control") != -1) {
@@ -4550,7 +4551,8 @@ $.dore = function (element, options) {
         }
       });
 
-      $('select, .tags-input, .datepicker').on('change', function () {
+      // $('select, .tags-input, .datepicker').on('change', function () {
+      $('select, .tags-input').on('change', function () {
         $(this).valid();
       });
     }

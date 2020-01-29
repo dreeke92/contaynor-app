@@ -9,8 +9,8 @@
         <div class="card mb-4">
           <div class="card-body">
             <%= simple_form_for @order, url: {action: "create"}, html: { autocomplete: 'off' } do |f| %>
-              <%= f.input :pickup_date, placeholder: "Select Date", as: :string, input_html: { class: "datepicker" } %>
-              <%= f.input :pickup_time, placeholder: "Select Time", as: :string, input_html: { class: "timepicker" } %>
+              <%= f.input :pickup_date, required: true, placeholder: "Select Date", as: :string, input_html: { class: "datepicker" } %>
+              <%= f.input :pickup_time, required: true, placeholder: "Select Time", as: :string, input_html: { class: "timepicker" } %>
               <%#= f.association :pickup_address,
                   collection: Address.all,
                   :label_method => :description,
@@ -35,10 +35,13 @@
                   <input type="hidden" name="order[pickup_address_id]" value="">
                   <div class="address-choices">
                     <% Address.all.each do |address| %>
-                        <input class="form-check-input radio_buttons required hidden" type="radio" value="<%= address.id %>" name="order[pickup_address_id]" id="order_pickup_address_id_<%= address.id %>">
+                        <input class="form-check-input radio_buttons required hidden" type="radio" value="<%= address.id %>" name="order[pickup_address_id]" id="order_pickup_address_id_<%= address.id %>" required>
                         <label class="form-check-label collection_radio_buttons address-choice js-address-choice-pickup" for="order_pickup_address_id_<%= address.id %>">
                           <%= address.description %>
                         </label>
+                    <% end %>
+                    <%= button_tag type: 'button', data: { toggle: "modal", background: 'static', target: '#add_address_modal' }, class: 'btn btn-link btn-sm add-address-btn' do %>
+                      Add new address <i class="iconsminds-add"></i>
                     <% end %>
                   </div>
                 </fieldset>
@@ -50,7 +53,7 @@
                   <input type="hidden" name="order[delivery_address_id]" value="">
                   <div class="address-choices">
                     <% Address.all.each do |address| %>
-                        <input class="form-check-input radio_buttons required hidden" type="radio" value="<%= address.id %>" name="order[delivery_address_id]" id="order_delivery_address_id_<%= address.id %>">
+                        <input class="form-check-input radio_buttons required hidden" type="radio" value="<%= address.id %>" name="order[delivery_address_id]" id="order_delivery_address_id_<%= address.id %>" required>
                         <label class="form-check-label collection_radio_buttons address-choice js-address-choice-delivery" for="order_delivery_address_id_<%= address.id %>">
                           <%= address.description %>
                         </label>
@@ -63,6 +66,9 @@
               <%= f.submit "Continue", class: 'btn btn-primary' %>
             <% end %>
           </div>
+          <%# modal %>
+          <%= render 'new_address_modal' %>
+          <%# modal ends %>
         </div>
       </div>
     </div>

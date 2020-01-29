@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_133212) do
+ActiveRecord::Schema.define(version: 2020_01_27_180543) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_01_21_133212) do
     t.time "pickup_time", comment: "This is the time when the load will be picked up"
     t.string "comment", comment: "This is a comment for the creator of the order to give extra information/context"
     t.string "type", comment: "This denotes what type of order it is"
-    t.string "status", comment: "This is for the Contaynor admin/system to denote what status of the order is"
+    t.integer "status", default: 0, comment: "This is for the Contaynor admin/system to denote what status of the order is"
     t.bigint "pickup_address_id"
     t.bigint "delivery_address_id"
     t.datetime "created_at", null: false

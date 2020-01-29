@@ -1,16 +1,19 @@
 class OrdersController < ApplicationController
   def new
-    @order = Order.new()
+    @order = Order.new
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.user = current_user
-    @order.pickup_date = Date.today
-    @order.organization = current_user.organization
-    @order.status = "Requesting"
-    @order.save
+    @order = current_user.orders.build(order_params)
+    @order.organization_id = current_user.organization.id
+    @order.save!
     redirect_to new_order_transport_load_path(@order)
+  end
+
+  def show
+    @order = Order.where(id: params[:id])&.first
+
+    @order || redirect_to(orders_path)
   end
 
   def update
@@ -27,6 +30,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:pickup_address_id, :delivery_address_id, :comment)
+    params.require(:order).permit(:pickup_address_id, :delivery_address_id, :comment, :pickup_date, :pickup_time)
   end
 end

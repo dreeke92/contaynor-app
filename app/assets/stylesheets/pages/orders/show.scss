@@ -1,0 +1,12 @@
+#map-wrapper {
+  height: 23.5rem;
+
+  #map-canvas {
+    height: 100%;
+    width: 100%;
+
+    img {
+      max-width: none;
+    }
+  }
+}

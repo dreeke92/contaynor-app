@@ -1,11 +1,21 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :skip => [:registrations] 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :organizations, only: [:show]
-  resources :orders, only: [:new, :create, :update, :index] do
+  resources :organizations, only: [:show] do
+    collection do
+      post 'remove_user/:user_id', to: 'organizations#remove_from_organization', as: 'remove_user'
+    end
+  end
+  resources :orders, only: [:new, :create, :update, :index, :show] do
     resources :transport_loads, only: [:new, :create]
   end
+  resources :address_books, only: [:index, :create, :destroy]
+  namespace :admin do
+    get 'user_management', to: 'user_management#index'
+  end
+  # named user so as not to conflict with devise
+  resources :user, only: [:create], controller: 'users'
 
   # These are all routes for the template and should be omitted for production
   get 'template', to: "templates#Dashboard.Default"

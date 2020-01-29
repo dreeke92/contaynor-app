@@ -1,6 +1,5 @@
 class ChangeOrderStatusColumnToInt < ActiveRecord::Migration[5.2]
   def up
-    Order.where(status: 'Requesting').update_all(status: 0)
     change_column :orders, :status, :integer, using: 'status::integer', default: 0
   end
 

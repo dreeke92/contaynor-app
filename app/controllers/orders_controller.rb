@@ -12,6 +12,8 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.where(id: params[:id])&.first
+
+    @order || redirect_to(orders_path)
   end
 
   def update

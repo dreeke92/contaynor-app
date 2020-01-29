@@ -1,6 +1,8 @@
 class OrganizationsController < ApplicationController
   def show
     @organization = current_user.organization
+
+    @organization || redirect_to(root_path)
   end
 
   def remove_from_organization

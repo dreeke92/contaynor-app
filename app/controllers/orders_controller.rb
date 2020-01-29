@@ -10,6 +10,10 @@ class OrdersController < ApplicationController
     redirect_to new_order_transport_load_path(@order)
   end
 
+  def show
+    @order = Order.where(id: params[:id])&.first
+  end
+
   def update
     @order = Order.find(params[:id])
     @order.update(status: "Pending")

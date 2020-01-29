@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       post 'remove_user/:user_id', to: 'organizations#remove_from_organization', as: 'remove_user'
     end
   end
-  resources :orders, only: [:new, :create, :update, :index] do
+  resources :orders, only: [:new, :create, :update, :index, :show] do
     resources :transport_loads, only: [:new, :create]
   end
   resources :address_books, only: [:index, :create, :destroy]

@@ -1,0 +1,76 @@
+<main>
+    <div class="container-fluid disable-text-selection">
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-2">
+                    <h1>Order details</h1>
+                </div>
+                <div class="separator mb-5"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-6 col-lg-12 mb-4">
+              <div class="card">
+                    <div class="card-body">
+                        <div class="scroll">
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Status:</p>
+                            <span class="badge badge-pill badge-primary"><%= @order.status.upcase %></span>
+                          </div>
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Date:</p>
+                            <div class="text-primary font-weight-semibold d-none d-sm-block">
+                                <%= @order.pickup_date %>
+                            </div>
+                          </div>
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Pick up address:</p>
+                            <p  style="max-width: 50%;" class="text-muted mb-1"><%= @order.pickup_address.complete %></p>
+                          </div>
+
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Delivery address:</p>
+                            <p  style="max-width: 50%;" class="text-muted mb-1"><%= @order.delivery_address.complete %></p>
+                          </div>
+
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Comment:</p>
+                            <p style="max-width: 50%;"><%= @order.comment %></p>
+                          </div>
+                        </div>
+                        <div class="transport-details-confirm-order">
+                        <%= link_to "confirm order", order_path(@order), method: :patch, class: "btn btn-primary" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6 col-lg-12 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div id="map-wrapper">
+                    <div id="map-canvas"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+function initMap () {
+  if ('geolocation' in navigator) {
+    navigator.geolocation.watchPosition((position) => { // get user location
+      const { latitude, longitude } = position.coords;
+      const center = { lat: latitude, lng: longitude };
+      const element = document.querySelector('#map-canvas');
+      // generate map
+      let map = new google.maps.Map(element, { zoom: 16, center });
+      // generate map marker
+      marker = new google.maps.Marker({position: center, map: map});
+    }, null, { enableHighAccuracy: true });
+  }
+}
+</script>

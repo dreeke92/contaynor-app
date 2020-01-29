@@ -13,7 +13,7 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
-  def is_admin?
+  def admin?
     organization_admin
   end
 

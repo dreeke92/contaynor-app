@@ -9,7 +9,7 @@ class AddressBooksController < ApplicationController
     if address.save!
       if address_params[:head_quarters] == '1'
         # check if organization has a headquarter and remove it as headquarter
-        hq = current_user.organization.address_books&.where(head_quarters: true).first
+        hq = current_user.organization.address_books&.where(head_quarters: true)&.first
         hq&.update(head_quarters: false)
       else
         address_book = current_user.organization

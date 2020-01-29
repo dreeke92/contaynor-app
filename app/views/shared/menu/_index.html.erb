@@ -20,7 +20,7 @@
                         <span>Orders</span>
                     <% end %>
                 </li>
-                <% if current_user.is_admin? %>
+                <% if current_user.admin? %>
                     <li class="<%= active_link admin_user_management_path %>">
                         <%= link_to admin_user_management_path do %>
                             <i class="iconsminds-gear"></i>
@@ -28,7 +28,7 @@
                         <% end %>
                     </li>
                 <% end %>
-                <% if current_user.is_admin? %>
+                <% if current_user.admin? %>
                     <li class="<%= active_link address_books_path %>">
                         <%= link_to address_books_path do %>
                             <i class="iconsminds-address-book-2"></i>

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Destroying all existing accounts"
+Order.destroy_all
 AddressBook.destroy_all
 Address.destroy_all
 Organization.destroy_all
@@ -19,7 +20,7 @@ contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", 
 ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
 
 puts "Creating users..."
-andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor)
+andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor, organization_admin: true)
 andreas.organization = contaynor
 suzanne = User.create!(email: "suzanne@ontex.com", password: "123456", first_name: "Suzanne", last_name: "Ogiers", dark_theme: false, organization: ontex, organization_admin: true)
 suzanne.organization = ontex

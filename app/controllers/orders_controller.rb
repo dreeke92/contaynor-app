@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(status: "Pending")
+    @order.update(status: 1)
     @order.save
     redirect_to root_path
   end

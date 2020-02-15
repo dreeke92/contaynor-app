@@ -38,7 +38,6 @@ import "../templates/vendor/dropzone.min";
 import "../features/radio-buttons";
 import "../features/sticky-scroll";
 
-
 // Initialize template necessary code
 $('.calendar').fullCalendar({ });
 $('.timepicker').timepicker();

@@ -7,6 +7,19 @@ class UsersController < ApplicationController
     redirect_to admin_user_management_path
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+
+    @user.update(user_params)
+    @user.save
+
+    redirect_to management_index_path
+  end
+
   private
 
   def user_params
@@ -14,3 +27,4 @@ class UsersController < ApplicationController
                                  :employee_admin, :organization_admin, :master_admin, :dark_theme)
   end
 end
+

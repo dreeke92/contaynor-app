@@ -19,27 +19,16 @@
                   <div class="d-flex flex-grow-1 min-width-zero">
                       <div
                           class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                              Order ID
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                              Total Weight
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                              # Parcels
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                              Pickup Address
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                              Delivery Address
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                              Date
-                          </p>
-                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                              Status
-                          </p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Order ID</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Total Weight</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100"># Parcels</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Pickup Address</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Delivery Address</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Date</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Status</p>
+                          <% if params[:org_id].present? && current_user.contaynor_employee? %>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Action</p>
+                          <% end %>
                       </div>
                   </div>
               </div>
@@ -49,38 +38,28 @@
       <% @orders.each do |order| %>
         <div class="row">
             <div class="col-12 list" data-check-all="checkAll">
-                <%= link_to order_path(id: order.id) do %>
-                    <div class="card d-flex flex-row mb-3">
-                        <div class="d-flex flex-grow-1 min-width-zero">
-                            <div
-                                class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
-                                <p class="list-item-heading mb-0 truncate w-15 w-xs-100" href="Pages.Product.Detail.html">
-                                    CONT000<%= order.id %>
-                                </p>
-                                <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                                    <%= order.transport_loads.count %> KG
-                                </p>
-                                <p class="list-item-heading mb-0 truncate w-10 w-xs-100" href="Pages.Product.Detail.html">
-                                    <%= order.transport_loads.count %>
-                                </p>
-                                <p class="mb-0 text-muted text-small w-15 w-xs-100">
-                                    <%= order.pickup_address.complete %>
-                                </p>
-                                <p class="mb-0 text-muted text-small w-15 w-xs-100">
-                                <%= order.delivery_address.complete %>
-                                </p>
-                                <p class="mb-0 text-muted text-small w-10 w-xs-100">
-                                <%= order.pickup_date %>
-                                </p>
-                                <div class="w-10 w-xs-100">
-                                    <span class="badge badge-pill badge-secondary">
-                                    <%= order.status %>
-                                    </span>
-                                </div>
+                <div class="card d-flex flex-row mb-3">
+                    <div class="d-flex flex-grow-1 min-width-zero">
+                        <%= link_to order_path(id: order.id), class: "card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center" do %>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100">CONT000<%= order.id %></p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100"><%= order.transport_loads.count %> KG</p>
+                            <p class="list-item-heading mb-0 truncate w-10 w-xs-100"><%= order.transport_loads.count %></p>
+                            <p class="mb-0 text-muted text-small w-15 w-xs-100"><%= order.pickup_address.complete %></p>
+                            <p class="mb-0 text-muted text-small w-15 w-xs-100"><%= order.delivery_address.complete %></p>
+                            <p class="mb-0 text-muted text-small w-10 w-xs-100"><%= order.pickup_date %></p>
+                            <div class="w-10 w-xs-100">
+                                <span class="badge badge-pill badge-secondary">
+                                <%= order.status %>
+                                </span>
                             </div>
-                        </div>
+                        <% end %>
+                        <% if params[:org_id].present? && current_user.contaynor_employee? %>
+                            <div class="w-10 w-xs-100 align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                <%= link_to "Edit", edit_order_path(id: order.id), class: "btn btn-info btn-sm" %>
+                            </div>
+                        <% end %>
                     </div>
-                <% end %>
+                </div>
             </div>
         </div>
       <% end %>

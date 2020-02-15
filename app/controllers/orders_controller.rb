@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(status: 1)
     @order.save
-    redirect_to root_path
+    redirect_to orders_path
   end
 
   def index

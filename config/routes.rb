@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'user_management', to: 'user_management#index'
   end
+  namespace :management do
+    get 'index', to: 'organizations#index'
+  end
   # named user so as not to conflict with devise
   resources :user, only: [:create], controller: 'users'
 

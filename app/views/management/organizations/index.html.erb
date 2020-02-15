@@ -1,0 +1,72 @@
+<main>
+  <div class="container-fluid disable-text-selection">
+      <div class="row">
+          <div class="col-12">
+              <div class="mb-2">
+                  <h1>Management Dashboard</h1>
+                  <div class="top-right-button-container">
+                      <button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-backdrop="static" data-target="#add_address_modal">TWO BUTTONS?</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <%# <%= render 'orders/new_address_modal' %>
+      <div class="row">
+          <div class="col-12 list" data-check-all="checkAll">
+              <div class="d-flex flex-row">
+                  <div class="d-flex flex-grow-1 min-width-zero">
+                      <div
+                          class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Name</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Industry</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Trees planted</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Tree Emission impact</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">Distance realized</p>
+                          <p class="list-item-heading mb-0 truncate w-15 w-xs-100">KM emission impact</p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100"></p>
+                          <p class="list-item-heading mb-0 truncate w-10 w-xs-100"></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="separator mb-5"></div>
+      <% @organizations.each do |organization| %>
+        <div class="row">
+            <div class="col-12 list" data-check-all="checkAll">
+                <div class="card d-flex flex-row mb-3">
+                    <div class="d-flex flex-grow-1 min-width-zero">
+                        <div
+                            class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.name %>">
+                              <%= organization.name %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.industry %>">
+                              <%= organization.industry %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.trees_planted %>">
+                              <%= organization.trees_planted || 'N/A' %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.tree_emission_impact %>">
+                              <%= organization.tree_emission_impact || 'N/A' %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.distance_realized %>">
+                              <%= organization.distance_realized || 'N/A' %>
+                            </p>
+                            <p class="list-item-heading mb-0 truncate w-15 w-xs-100" title="<%= organization.distance_emission_impact %>">
+                              <%= organization.distance_emission_impact || 'N/A' %>
+                            </p>
+                            <div class="w-10 w-xs-100">
+                                <button class='btn btn-info'>See orders</button>
+                            </div>
+                            <div class="w-10 w-xs-100">
+                                <button class='btn btn-primary'>See users</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <% end %>
+  </div>
+</main>

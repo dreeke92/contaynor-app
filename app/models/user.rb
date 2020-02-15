@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  CONTAYNOR_EMAIL = 'contaynor.com'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,6 +16,10 @@ class User < ApplicationRecord
 
   def admin?
     organization_admin
+  end
+
+  def contaynor_employee?
+    email.end_with? CONTAYNOR_EMAIL
   end
 
   def orgainzation_members

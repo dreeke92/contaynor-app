@@ -7,6 +7,9 @@
                   <div class="top-right-button-container">
                       <%= link_to 'BOOK A NEW DELIVERY', new_order_path, class: "btn btn-primary btn-lg top-right-button mr-1" %>
                   </div>
+                  <% unless @organization.nil? %>
+                    <h3>Organization: <%= @organization.name %></h3>
+                  <% end %>
               </div>
           </div>
       </div>

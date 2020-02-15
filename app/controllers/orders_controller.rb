@@ -25,6 +25,13 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.organization.orders
+    @organization = nil
+
+    # if org id params exist and user is an contaynor employee
+    if params[:org_id].present? && current_user.contaynor_employee?
+      @organization = Organization.find(params[:org_id])
+      @orders = @organization.orders
+    end
   end
 
   private

@@ -5,7 +5,7 @@ module SessionsHelper
   end
    
   # ensure user is contaynor employee
-  def is_admin
+  def is_org_admin
     redirect_to root_path unless current_user.admin?
   end
 end

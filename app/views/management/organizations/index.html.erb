@@ -57,10 +57,10 @@
                               <%= organization.distance_emission_impact || 'N/A' %>
                             </p>
                             <div class="w-10 w-xs-100">
-                                <button class='btn btn-info'>See orders</button>
+                                <%= link_to 'See orders', orders_path(org_id: organization.id ), class: 'btn btn-info' %>
                             </div>
                             <div class="w-10 w-xs-100">
-                                <button class='btn btn-primary'>See users</button>
+                                <%= link_to 'See users', admin_user_management_path(org_id: organization.id ), class: 'btn btn-primary' %>
                             </div>
                         </div>
                     </div>

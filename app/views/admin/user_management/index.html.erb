@@ -7,6 +7,9 @@
                   <div class="top-right-button-container">
                       <button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-backdrop="static" data-target="#add_user_modal">ADD NEW USER TO ORGANIZATION</button>
                   </div>
+                  <% unless @organization.nil? %>
+                    <h3>Organization: <%= @organization.name %></h3>
+                  <% end %>
               </div>
           </div>
       </div>

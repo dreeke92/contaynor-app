@@ -39,6 +39,16 @@ import "../features/radio-buttons";
 import "../features/sticky-scroll";
 
 // Initialize template necessary code
-$('.calendar').fullCalendar({ });
+$('.calendar').fullCalendar({});
 $('.timepicker').timepicker();
 $('.datepicker').datepicker()
+
+//= require moment 
+//= require fullcalendar
+//= require fullcalendar/locale-all
+
+$('.order-calendar').fullCalendar({
+  themeSystem: "bootstrap4",
+  height: "auto",
+  events: '/orders.json'
+});

@@ -44,6 +44,11 @@ class OrdersController < ApplicationController
       @organization = Organization.find(params[:org_id])
       @orders = @organization.orders
     end
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private

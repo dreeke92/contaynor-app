@@ -32,4 +32,3 @@ class UsersController < ApplicationController
                                  :employee_admin, :organization_admin, :master_admin, :dark_theme)
   end
 end
-

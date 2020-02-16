@@ -1,6 +1,6 @@
 module Admin
   class UserManagementController < ApplicationController
-    before_action :is_org_admin
+    before_action :org_admin?
 
     def index
       @users = current_user.orgainzation_members

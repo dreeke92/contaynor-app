@@ -1,7 +1,9 @@
-class Management::OrganizationsController < ApplicationController
-  before_action :is_contaynor_employee
+module Management
+  class OrganizationsController < ApplicationController
+    before_action :contaynor_employee?
 
-  def index
-    @organizations = Organization.all
+    def index
+      @organizations = Organization.all
+    end
   end
 end

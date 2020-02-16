@@ -10,6 +10,9 @@ class User < ApplicationRecord
   # after_create :send_welcome_mail
   before_validation :set_password
 
+  # required so we can use have the org_id field in the form to add new users
+  attr_accessor :org_id
+
   def name
     first_name + " " + last_name
   end

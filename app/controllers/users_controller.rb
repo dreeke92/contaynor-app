@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   def create
     user = User.new(user_params)
-    user.organization = current_user.organization
+
+    if params.dig(:user, :org_id).present?
+      user.organization = Organization.find(params.dig(:user, :org_id).to_i)
+    else
+      user.organization = current_user.organization
+    end
 
     user.save
     redirect_to admin_user_management_path
@@ -10,7 +15,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
-  
+
   def update
     @user = User.find(params[:id])
 

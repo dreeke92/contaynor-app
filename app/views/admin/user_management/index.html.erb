@@ -7,6 +7,9 @@
                   <div class="top-right-button-container">
                       <button type="button" class="btn btn-primary btn-lg top-right-button mr-1" data-toggle="modal" data-backdrop="static" data-target="#add_user_modal">ADD NEW USER TO ORGANIZATION</button>
                   </div>
+                  <% unless @organization.nil? %>
+                    <h3>Organization: <%= @organization.name %></h3>
+                  <% end %>
               </div>
           </div>
       </div>
@@ -21,6 +24,9 @@
                           <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Email</p>
                           <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Phone number</p>
                           <p class="list-item-heading mb-0 truncate w-10 w-xs-100">Action</p>
+                          <% if params[:org_id].present? && current_user.contaynor_employee? %>
+                            <p class="list-item-heading mb-0 truncate w-5 w-xs-100"></p>
+                          <% end %>
                       </div>
                   </div>
               </div>
@@ -41,11 +47,16 @@
                               <%= user.email %>
                             </p>
                             <p class="list-item-heading mb-0 truncate w-10 w-xs-100" title="<%= user.telephone_number %>">
-                              <%= user.telephone_number || 'N/A' %>
+                              <%= user.telephone_number.present? ? user.telephone_number : 'N/A' %>
                             </p>
                             <div class="w-10 w-xs-100">
                                 <%= link_to 'Remove', remove_user_organizations_path(user_id: user.id), class: 'btn btn-danger', method: :post %>
                             </div>
+                            <% if params[:org_id].present? && current_user.contaynor_employee? %>
+                                <div class="w-5 w-xs-100 align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center">
+                                    <%= link_to "Edit", edit_user_path(id: user.id), class: "btn btn-info btn-sm" %>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>

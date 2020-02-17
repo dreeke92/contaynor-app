@@ -26,6 +26,8 @@ gem 'bootstrap-tagsinput-rails'
 gem "jquery-slick-rails"
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

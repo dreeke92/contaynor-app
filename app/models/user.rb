@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :orders
 
   # after_create :send_welcome_mail
-  before_validation :set_password
+  before_validation :set_password, if: :new_record?
 
   # required so we can use have the org_id field in the form to add new users
   attr_accessor :org_id
@@ -30,11 +30,11 @@ class User < ApplicationRecord
   end
 
   def set_password
-    @generated_password = Devise.friendly_token.first(8)
-    self.password ||= @generated_password
+    @user_password = self.password || Devise.friendly_token.first(8)
+    self.password ||= @user_password
   end
 
   def send_welcome_mail
-    RegistrationMailer.welcome_email(self, @generated_password).deliver
+    RegistrationMailer.welcome_email(self, @user_password).deliver
   end
 end

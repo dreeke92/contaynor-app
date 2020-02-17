@@ -6,7 +6,7 @@ class User < ApplicationRecord
   belongs_to :organization, optional: true
   has_many :orders
 
-  after_create :send_welcome_mail
+  # after_create :send_welcome_mail
   before_validation :set_password
 
   def name

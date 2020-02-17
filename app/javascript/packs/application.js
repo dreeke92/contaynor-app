@@ -50,5 +50,12 @@ $('.datepicker').datepicker()
 $('.order-calendar').fullCalendar({
   themeSystem: "bootstrap4",
   height: "auto",
-  events: '/orders.json'
+  events: '/orders.json',
+  buttonText: {
+    today: "Today",
+    month: "Month",
+    week: "Week",
+    day: "Day",
+    list: "List"
+  }
 });

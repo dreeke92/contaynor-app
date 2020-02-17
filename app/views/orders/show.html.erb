@@ -21,7 +21,13 @@
                           <div class="transport-detail">
                             <p class="list-item-heading">Date:</p>
                             <div class="text-primary font-weight-semibold d-none d-sm-block">
-                                <%= @order.pickup_date %>
+                                <%= @order.pickup_date.strftime("%A, %B %e, %Y") %>
+                            </div>
+                          </div>
+                          <div class="transport-detail">
+                            <p class="list-item-heading">Time:</p>
+                            <div class="text-primary font-weight-semibold d-none d-sm-block">
+                                <%= @order.pickup_time.strftime("%I:%M %p") %>
                             </div>
                           </div>
                           <div class="transport-detail">
@@ -60,6 +66,7 @@
 </main>
 
 <script>
+// callback function for Maps
 function initMap () {
   if ('geolocation' in navigator) {
     navigator.geolocation.watchPosition((position) => { // get user location

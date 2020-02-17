@@ -7,15 +7,18 @@ Rails.application.routes.draw do
       post 'remove_user/:user_id', to: 'organizations#remove_from_organization', as: 'remove_user'
     end
   end
-  resources :orders, only: [:new, :create, :update, :index, :show] do
+  resources :orders, only: [:new, :create, :update, :index, :show, :edit] do
     resources :transport_loads, only: [:new, :create]
   end
   resources :address_books, only: [:index, :create, :destroy]
   namespace :admin do
     get 'user_management', to: 'user_management#index'
   end
+  namespace :management do
+    get 'index', to: 'organizations#index'
+  end
   # named user so as not to conflict with devise
-  resources :user, only: [:create], controller: 'users'
+  resources :user, only: [:create, :edit, :update], controller: 'users'
 
   # These are all routes for the template and should be omitted for production
   get 'template', to: "templates#Dashboard.Default"

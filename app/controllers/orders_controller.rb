@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.build(order_params)
     @order.organization_id = current_user.organization.id
-    @order.update(status: 1)
+    @order.update(status: 0)
     @order.save!
     redirect_to new_order_transport_load_path(@order)
   end

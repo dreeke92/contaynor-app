@@ -79,7 +79,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: contaynor-app_production
-  username: contaynor-app
-  password: <%= ENV['CONTAYNOR-APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

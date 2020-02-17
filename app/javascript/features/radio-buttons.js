@@ -11,10 +11,3 @@ $(document).ready(function(){
     $(this).addClass("active");
   });
 });
-
-$(document).ready(function(){
-  $(".js-address-choice-status").click(function(){
-    $(".js-address-choice-status").removeClass("active");
-    $(this).addClass("active");
-  });
-});

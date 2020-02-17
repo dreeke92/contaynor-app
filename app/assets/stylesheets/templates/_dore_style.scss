@@ -2054,9 +2054,6 @@ button {
       padding-right: unset;
       margin-right: unset;
       height: 100%;
-
-      // styles to scroll the menu at certain viewport
-      overflow-y: auto;
       .ps__thumb-y {
         right: 0;
       }
@@ -2299,14 +2296,6 @@ button {
     height: calc(100% - #{$navbar-height-xs});
     @include depth(1);
   }
-}
-
-// hide main menu scrollbar when in display
-.menu .main-menu .scroll::-webkit-scrollbar {
-  width: 1px;
-}
-.menu .main-menu .scroll {
-  scrollbar-width: thin;
 }
 
 //Menu Config Main Menu Sub Menu

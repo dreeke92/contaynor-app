@@ -1,6 +1,4 @@
 class OrdersController < ApplicationController
-  before_action :sanitize, only: :update
-
   def new
     @order = Order.new
   end
@@ -18,48 +16,20 @@ class OrdersController < ApplicationController
     @order || redirect_to(orders_path)
   end
 
-  def edit
-    @order = Order.find(params[:id])
-  end
-
   def update
     @order = Order.find(params[:id])
-
-    if params.dig(:order, :status).nil?
-      @order.update(status: 1)
-    else
-      @order.update(order_params)
-    end
-
+    @order.update(status: 1)
     @order.save
-    redirect_to orders_path
+    redirect_to root_path
   end
 
   def index
     @orders = current_user.organization.orders
-    @organization = nil
-
-    # if org id params exist and user is an contaynor employee
-    if params[:org_id].present? && current_user.contaynor_employee?
-      @organization = Organization.find(params[:org_id])
-      @orders = @organization.orders
-    end
-
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:pickup_address_id,
-                                  :delivery_address_id, :comment,
-                                  :pickup_date, :pickup_time, :status)
-  end
-
-  def sanitize
-    params[:order][:status] = params.dig(:order, :status).to_i unless params.dig(:order, :status).nil?
+    params.require(:order).permit(:pickup_address_id, :delivery_address_id, :comment, :pickup_date, :pickup_time)
   end
 end

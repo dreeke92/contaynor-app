@@ -9,17 +9,34 @@
             </div>
             <%= simple_form_for User.new, url: {controller: '/users', action: "create"}, html: { autocomplete: 'off' } do |f| %>
               <div class="modal-body">
-                <%= f.input :first_name, placeholder: "Enter first name", required: true %>
-                <%= f.input :last_name, placeholder: "Enter last name", required: true %>
-                <%= f.input :email, placeholder: "Enter email", required: true %>
-                <%= f.input :company_role, placeholder: "Enter company role" %>
-                <%= f.input :telephone_number, placeholder: "Enter telephone number" %>
+                <div class="form-group">
+                  <%= f.input :first_name, placeholder: "Enter first name", required: true %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :last_name, placeholder: "Enter last name", required: true %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :email, placeholder: "Enter email", required: true %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :company_role, placeholder: "Enter company role" %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :telephone_number, placeholder: "Enter telephone number" %>
+                </div>
 
-                <%= f.input :employee_admin, as: :boolean, label: 'Make user employee admin', class: "form-check-input radio_buttons" %>
-                <%= f.input :organization_admin, as: :boolean, label: 'Make user organization admin' %>
-                <%= f.input :master_admin, as: :boolean, label: 'Make user master admin', class: "form-check-input radio_buttons" %>
-                <%= f.input :dark_theme, as: :boolean, label: 'Assign dark theme' %>
-                <%= f.input :org_id, as: :hidden, input_html: { value: params[:org_id] } %>
+                <div class="form-group">
+                  <%= f.input :employee_admin, as: :boolean, label: 'Make user employee admin', class: "form-check-input radio_buttons" %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :organization_admin, as: :boolean, label: 'Make user organization admin' %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :master_admin, as: :boolean, label: 'Make user master admin', class: "form-check-input radio_buttons" %>
+                </div>
+                <div class="form-group">
+                  <%= f.input :dark_theme, as: :boolean, label: 'Assign dark theme' %>
+                </div>
               </div>
 
               <div class="modal-footer">

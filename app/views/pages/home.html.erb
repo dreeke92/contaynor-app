@@ -17,8 +17,8 @@
                 <i class="iconsminds-environmental mr-2 text-white align-text-bottom d-inline-block"></i>
                 <div>
                   <% if current_user %>
-                    <p class="lead text-white">Total positive CO2 impact: <strong>2.7
-                      <%#= current_user.organization.tree_emission_impact %>
+                    <p class="lead text-white">Total positive CO2 impact: <strong>
+                      <%= current_user.organization.tree_emission_impact %>
                       </strong></p>
                     <p class="text-small text-white">Total positive CO2 reduction measured in tonnes</p>
                   <% end %>
@@ -38,8 +38,7 @@
                 <div>
                   <% if current_user %>
                     <p class="lead text-default">Number of trees planted: <strong class="text-green">
-                      <%#= current_user.organization.trees_planted %>
-                        10
+                      <%= current_user.organization.trees_planted %>
                       </strong></p>
                     <p class="text-small text-default">Number of trees planted as a result of your transportation assignments</p>
                   <% end %>
@@ -59,8 +58,7 @@
                 <div>
                   <% if current_user %>
                     <p class="lead text-default">Total distance: <strong class="text-green">
-                      <%#= current_user.organization.distance_realized %>
-                        1372
+                      <%= current_user.organization.distance_realized %>
                       </strong></p>
                     <p class="text-small text-default">Amount of zero-emission kilometers driven with Contaynor</p>
                   <% end %>

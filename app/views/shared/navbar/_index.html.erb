@@ -19,14 +19,14 @@
     aria-expanded="false">
         <span class="name"><%= current_user.name %></span>
         <span>
-          <%= image_tag "profile.jpg" %>
+          <% if current_user.contaynor_employee? %>
+            <%= image_tag "profile.jpg" %>
+          <% else %>
+            <%= image_tag "client.jpg" %>
+          <% end %>
         </span>
       </button>
       <div class="dropdown-menu dropdown-menu-right mt-3">
-          <a class="dropdown-item" href="#">Account</a>
-          <a class="dropdown-item" href="#">Features</a>
-          <a class="dropdown-item" href="#">History</a>
-          <a class="dropdown-item" href="#">Support</a>
           <% if current_user.contaynor_employee? %>
             <%= link_to 'Management Dashboard', management_index_path, class: 'dropdown-item' %>
           <% end %>

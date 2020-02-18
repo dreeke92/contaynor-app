@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :organization, optional: true
   has_many :orders
+  has_one_attached :photo
 
   # after_create :send_welcome_mail
   before_validation :set_password, if: :new_record?

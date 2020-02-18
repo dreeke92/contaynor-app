@@ -28,6 +28,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-timepicker-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'cloudinary', '~> 1.12.0'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

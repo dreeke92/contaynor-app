@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Destroying all existing accounts"
+TransportLoad.destroy_all
 Order.destroy_all
 AddressBook.destroy_all
 Address.destroy_all
@@ -16,8 +17,8 @@ User.destroy_all
 # if this is run in production, it might fail if any address is linked to an order
 
 puts "Creating organizations and their stats..."
-contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
-ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "100", tree_emission_impact: "5", distance_realized: "200", distance_emission_impact: "10")
+contaynor = Organization.create!(name: "Contaynor", industry: "Transportation", trees_planted: "43", tree_emission_impact: "5", distance_realized: "350", distance_emission_impact: "10")
+ontex = Organization.create!(name: "Ontex", industry: "FMCG producer", trees_planted: "97", tree_emission_impact: "4", distance_realized: "387", distance_emission_impact: "10")
 
 puts "Creating users..."
 andreas = User.create!(email: "andreas@contaynor.com", password: "123456", first_name: "Andreas", last_name: "Van Assche", dark_theme: false, organization: contaynor, organization_admin: true)
